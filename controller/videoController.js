@@ -69,8 +69,57 @@ const uploadVideo = async (req, res) => {
     }
   };
   
+
+  const getAllVideos = async (req, res) => {
+    try {
+      // Retrieve all video metadata
+      const videos = await Video.find();
+  
+      res.json(videos);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
+  const getVideoById = async (req, res) => {
+    try {
+      const videoId = req.params.id;
+  
+      // Check if the video metadata exists
+      const video = await Video.findById(videoId);
+  
+      if (!video) {
+        return res.status(404).json({ message: 'Video metadata not found' });
+      }
+  
+      res.json(video);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
+
+  const deleteAllVideos = async (req, res) => {
+    try {
+      // Delete all videos
+      const deletedVideos = await Video.deleteMany();
+  
+      if (deletedVideos.deletedCount === 0) {
+        return res.status(404).json({ message: 'No videos found to delete' });
+      }
+  
+      res.json({ message: 'All videos deleted successfully', deletedVideos });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+  
+  
   module.exports = {
     uploadVideo,
     deleteVideo,
-    updateVideo
+    updateVideo,
+    getAllVideos,
+    getVideoById,
+    deleteAllVideos
   };

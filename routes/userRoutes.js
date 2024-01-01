@@ -13,7 +13,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 router.get('/all', userController.getAllUsers);
 router.delete('/all', userController.deleteAllUsers); 
 router.delete('/all/:id', userController.deleteUserById);   // Delete user by ID// Delete all users
-// Create a new menu item
+
 router.post('/menuItems', menuController.createMenuItem);
 router.put('/menuItems/:id', menuController.updateMenuItem); 
 router.get('/menuItems', menuController.getAllMenuItems);   // Get all menu items// New route for updating a menu item by ID
@@ -21,8 +21,10 @@ router.delete('/menuItems', menuController.deleteMenuItemAll);
 router.delete('/menuItems/:id', menuController.deleteMenuItem);
 router.get('/menuItems/:id', menuController.getMenuItemById); // Get menu item by ID // New route for deleting a menu item by ID
 
-
+router.get('/videos', videoController.getAllVideos); // Get all video metadata
 router.post('/upload', upload.single('video'), videoController.uploadVideo);
+router.get('/videos/:id', videoController.getVideoById);
+router.delete('/delete-all', videoController.deleteAllVideos); // Delete all videos
 router.put('/update/:id', videoController.updateVideo); // New route for updating a video
 router.delete('/delete/:id', videoController.deleteVideo); // New route for deleting a video
 
@@ -37,7 +39,7 @@ router.delete('/ad-content', adContentController.deleteAllAdContent); // Delete 
 
 // contact us
 
-router.get("/messeges",authMiddleware.verifyToken,getContactController.getUserContactus)
+router.get("/messeges",authMiddleware.verifyToken,getContactController.getUserContactus);
 
 
 
