@@ -22,11 +22,11 @@ router.delete('/menuItems/:id', menuController.deleteMenuItem);
 router.get('/menuItems/:id', menuController.getMenuItemById); // Get menu item by ID // New route for deleting a menu item by ID
 
 router.get('/videos', videoController.getAllVideos); // Get all video metadata
-router.post('/upload', upload.single('video'), videoController.uploadVideo);
+router.post('/videos', upload.single('video'), videoController.uploadVideo);
 router.get('/videos/:id', videoController.getVideoById);
-router.delete('/delete-all', videoController.deleteAllVideos); // Delete all videos
-router.put('/update/:id', videoController.updateVideo); // New route for updating a video
-router.delete('/delete/:id', videoController.deleteVideo); // New route for deleting a video
+router.delete('/videos-all', videoController.deleteAllVideos); // Delete all videos
+router.put('/videos/:id', videoController.updateVideo); // New route for updating a video
+router.delete('/videos/:id', videoController.deleteVideo); // New route for deleting a video
 
 
 // POST request to add content
