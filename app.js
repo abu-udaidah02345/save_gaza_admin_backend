@@ -8,7 +8,7 @@ const videoRoutes=require("./routes/userRoutes");
 
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 6000;
 
 mongoose.connect(dbConfig.url);
 
